@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+
+    <!-- 環境変数からログファイルのパスを取得 -->
+    <springProperty scope="context" name="LOG_FILE" source="logging.file.name" defaultValue="app.log"/>
+
+    <!-- コンソール出力の設定 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(%-40.40logger{39}){cyan} %m%n%wEx</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 開発環境用設定 -->
+    <!-- 
+    <springProfile name="dev">
+        <property name="logFilePath" value="/var/log/dev/"/>
+        <property name="logLevel" value="DEBUG"/>
+    </springProfile>
+    -->
+
+    <!-- UAT環境用設定 -->
+    <!--
+    <springProfile name="uat">
+        <property name="logFilePath" value="/var/log/uat/"/>
+        <property name="logLevel" value="INFO"/>
+    </springProfile>
+    -->
+
+    <!-- 本番環境用設定 -->
+    <!--
+    <springProfile name="production">
+        <property name="logFilePath" value="/var/log/production/"/>
+        <property name="logLevel" value="INFO"/>
+    </springProfile>
+    -->
+
+    <!-- コンソール出力 -->
+    <!--
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <!-- アプリケーションログのファイル書き出し -->
+    <!--
+    <appender name="APPLICATION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFilePath}${logFileName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFilePath}${logFileName}-%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <!-- ログレベルの設定 -->
+    <root level="${logLevel}">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="APPLICATION_LOG"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- SQLステートメントのログ出力を有効にする -->
+    <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.hibernate" level="ERROR"/>
+    <logger name="com.example.myapp" level="DEBUG"/>
+    <logger name="org.apache.ibatis.logging" level="DEBUG"/>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+</configuration>
