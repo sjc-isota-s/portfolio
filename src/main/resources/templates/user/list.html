@@ -1,35 +1,177 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>ユーザー情報一覧</title>
-<link href="/css/list.css" rel="stylesheet"></link>
-<meta charset="utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>磯田のポートフォリオ</title>
+	<link href="/css/list.css" rel="stylesheet"></link>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+	<link href="/css/ress.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="/css/style.css" media="all" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" href="/img/favicon.ico" />
 </head>
+
 <body>
-    <h1>ユーザー情報一覧</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>名前</th>
-                <th>住所</th>
-                <th>電話番号</th>
-                <th>更新日時</th>
-                <th>登録日時</th>
-                <th>削除日時</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${userlist}" th:object="${user}">
-                <td class="center" th:text="*{id}"></td>
-                <td th:text="*{name}"></td>
-                <td th:text="*{address}"></td>
-                <td class="center" th:text="*{phone}"></td>
-                <td class="center" th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></td>
-                <td class="center" th:text="${#dates.format(user.createDate, 'yyyy/MM/dd')}"></td>
-                <td class="center" th:text="${#dates.format(user.deleteDate, 'yyyy/MM/dd')}"></td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="wrapper">
+
+		<!-- header -->
+		<header class="header ">
+			<div class="container">
+				<h1 class="header-logo">
+					<a href=".">SATOSHI ISOTA</a>
+				</h1>
+				<nav class="gnav">
+					<ul class="gnav-list">
+						<li class="gnav-item"><a href="#about">ABOUT</a></li>
+						<li class="gnav-item"><a href="#skill">SKILL</a></li>
+						<li class="gnav-item"><a href="#works">WORKS</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- /header -->
+
+		<main class="content">
+
+			<!-- mv -->
+			<div class="mv">
+				<div class="mv-container">
+					<p class="mv-title">SATOSHI ISOTA</p>
+				</div>
+			</div>
+			<!-- /mv -->
+
+			<!-- about -->
+			<section class="about section" id="about">
+				<div class="container">
+					<h2 class="title">ABOUT</h2>
+					<div class="profile">
+						<p class="profile-img">
+							<img src="/img/about_icon.png" alt="">
+						</p>
+						<div class="profile-body">
+							<table>
+								<tr>
+									<th>名前</th>
+									<td>磯田　智志</td>
+								</tr>
+								<tr>
+									<th>生年月日</th>
+									<td>1989年 8月 21日</td>
+								</tr>
+								<tr>
+									<th>年齢</th>
+									<td>35</td>
+								</tr>
+								<tr>
+									<th>血液型</th>
+									<td>A</td>
+								</tr>
+								<tr>
+									<th>出身地</th>
+									<td>島根県出雲市多伎町</td>
+								</tr>
+								<tr>
+									<th>職業</th>
+									<td>SE（システムエンジニア）</td>
+								</tr>
+								<tr>
+									<th>趣味</th>
+									<td>音楽、映画、ゲーム etc...</td>
+								</tr>
+								<tr>
+									<th>スポーツ経験</th>
+									<td>野球、テニス</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /about -->
+
+			<!-- skill -->
+			<section class="skill section" id="skill">
+				<div class="container">
+					<h2 class="title">SKILL</h2>
+					<div class="skill-list">
+						<div class="skill-item">
+							<p class="skill-img"><img src="/img/ipa.png" alt=""></p>
+							<div class="skill-body">
+								<h3 class="skill-name">基本情報処理技術者</h3>
+								<a class="skill-text" href="http://www.jitec.jp/1_11seido/h13/fe.html" target="_blank">
+									http://www.jitec.jp/1_11seido/h13/fe.html
+								</a>
+							</div>
+						</div>
+						<div class="skill-item">
+							<p class="skill-img"><img src="/img/oracle.png" alt=""></p>
+							<div class="skill-body">
+								<h3 class="skill-name">オラクルJava認定資格(OCJ)</h3>
+								<a class="skill-text" href="http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=516&p_org_id=70" target="_blank">
+									http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=516&p_org_id=70
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- skill -->
+
+			<!-- works -->
+			<section class="works section" id="works">
+				<div class="container">
+					<h2 class="title">WORKS</h2>
+					<div class="works-list">
+						<a class="works-item" href="https://amaresas.town.ama.shimane.jp" target="_blank">
+							<div class="works-img"><img src="/img/amacho_resas.png" alt="" /></div>
+							<p class="works-name">海士町版RESAS</p>
+						</a>
+						<a class="works-item" href="" target="_blank">
+							<div class="works-img"><img src="/img/works-dummy.jpg" alt="" /></div>
+							<p class="works-name">XXX</p>
+						</a>
+						<a class="works-item" href="" target="_blank">
+							<div class="works-img"><img src="/img/works-dummy.jpg" alt="" /></div>
+							<p class="works-name">XXX</p>
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- /works -->
+
+<!--
+		<h1>ユーザー情報一覧</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名前</th>
+					<th>住所</th>
+					<th>電話番号</th>
+					<th>更新日時</th>
+					<th>登録日時</th>
+					<th>削除日時</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${userlist}" th:object="${user}">
+					<td class="center" th:text="*{id}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{address}"></td>
+					<td class="center" th:text="*{phone}"></td>
+					<td class="center" th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></td>
+					<td class="center" th:text="${#dates.format(user.createDate, 'yyyy/MM/dd')}"></td>
+					<td class="center" th:text="${#dates.format(user.deleteDate, 'yyyy/MM/dd')}"></td>
+				</tr>
+			</tbody>
+			</table>
+-->
+		</main>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type='text/javascript' src="/js/script.js"></script>
 </body>
 </html>
