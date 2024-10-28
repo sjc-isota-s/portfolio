@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,24 @@ public class UserService {
      */
     @Autowired
     UserRepository userRepository;
+
+    public User search() throws ParseException {
+        User user = new User();
+
+        // ユーザーTBLの内容を検索
+        List<User> userlist = userRepository.findAll();
+
+        if (userlist.size() >= 1) {
+            user = userlist.get(0);
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年 MM月 dd日");
+            Date birthday = sdf1.parse(user.getBirthday());
+            user.setBirthday(sdf2.format(birthday));
+        }
+
+        return user;
+    }
 
     public List<User> searchAll() {
         // ユーザーTBLの内容を全検索

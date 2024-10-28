@@ -33,16 +33,46 @@ public class User {
     private String name;
 
     /**
-     * 住所
+     * 誕生日
      */
-    @Column(name = "address")
-    private String address;
+    @Column(name = "birthday")
+    private String birthday;
 
     /**
-     * 電話番号
+     * 年齢
      */
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "age")
+    private Integer age;
+
+    /**
+     * 血液型
+     */
+    @Column(name = "blood_type")
+    private String bloodType;
+
+    /**
+     * 出身地
+     */
+    @Column(name = "birthplace")
+    private String birthplace;
+
+    /**
+     * 職業
+     */
+    @Column(name = "occupation")
+    private String occupation;
+
+    /**
+     * 趣味
+     */
+    @Column(name = "hobby")
+    private String hobby;
+
+    /**
+     * スポーツ経験
+     */
+    @Column(name = "sports")
+    private String sports;
 
     /**
      * 更新日時

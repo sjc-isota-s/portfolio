@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.List;
+import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +27,12 @@ public class UserController {
    * ユーザー情報一覧画面を表示
    * @param model Model
    * @return ユーザー情報一覧画面のHTML
+ * @throws ParseException 
    */
   @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-  public String displayList(Model model) {
-    List<User> userlist = userService.searchAll();
-    model.addAttribute("userlist", userlist);
+  public String displayList(Model model) throws ParseException {
+    User user = userService.search();
+    model.addAttribute("user", user);
     return "user/list";
   }
 }

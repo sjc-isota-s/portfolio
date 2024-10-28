@@ -21,14 +21,39 @@ public class SearchUser {
     private String name;
 
     /**
-     * 住所
+     * 誕生日
      */
-    private String address;
+    private String birthday;
 
     /**
-     * 電話番号
+     * 年齢
      */
-    private String phone;
+    private Integer age;
+
+    /**
+     * 血液型
+     */
+    private String bloodType;
+
+    /**
+     * 出身地
+     */
+    private String birthplace;
+
+    /**
+     * 職業
+     */
+    private String occupation;
+
+    /**
+     * 趣味
+     */
+    private String hobby;
+
+    /**
+     * スポーツ経験
+     */
+    private String sports;
 
     /**
      * 更新日時
